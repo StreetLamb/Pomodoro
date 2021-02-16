@@ -1,0 +1,382 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 50;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		31CEEFBD25D8263100F0D450 /* PomodoroApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31CEEFBC25D8263100F0D450 /* PomodoroApp.swift */; };
+		31CEEFBF25D8263100F0D450 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31CEEFBE25D8263100F0D450 /* ContentView.swift */; };
+		31CEEFC125D8263300F0D450 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 31CEEFC025D8263300F0D450 /* Assets.xcassets */; };
+		31CEEFC425D8263300F0D450 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 31CEEFC325D8263300F0D450 /* Preview Assets.xcassets */; };
+		31CEEFC625D8263300F0D450 /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31CEEFC525D8263300F0D450 /* Persistence.swift */; };
+		31CEEFC925D8263300F0D450 /* Pomodoro.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 31CEEFC725D8263300F0D450 /* Pomodoro.xcdatamodeld */; };
+		31CEEFD225D8265D00F0D450 /* PomodoroModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31CEEFD125D8265D00F0D450 /* PomodoroModel.swift */; };
+		31CEEFD525D826CF00F0D450 /* PomodoroView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31CEEFD425D826CF00F0D450 /* PomodoroView.swift */; };
+		31CEEFDC25D8CE4000F0D450 /* PomodoroModelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31CEEFDB25D8CE4000F0D450 /* PomodoroModelView.swift */; };
+		31CEEFDF25D92B4E00F0D450 /* AddTaskView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31CEEFDE25D92B4E00F0D450 /* AddTaskView.swift */; };
+		31CEEFE225D968C000F0D450 /* TaskItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31CEEFE125D968C000F0D450 /* TaskItemView.swift */; };
+		31CEEFE925DA12CF00F0D450 /* EditTaskView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31CEEFE825DA12CF00F0D450 /* EditTaskView.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		31CEEFB925D8263100F0D450 /* Pomodoro.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Pomodoro.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		31CEEFBC25D8263100F0D450 /* PomodoroApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PomodoroApp.swift; sourceTree = "<group>"; };
+		31CEEFBE25D8263100F0D450 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		31CEEFC025D8263300F0D450 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		31CEEFC325D8263300F0D450 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		31CEEFC525D8263300F0D450 /* Persistence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Persistence.swift; sourceTree = "<group>"; };
+		31CEEFC825D8263300F0D450 /* Pomodoro.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Pomodoro.xcdatamodel; sourceTree = "<group>"; };
+		31CEEFCA25D8263300F0D450 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		31CEEFD125D8265D00F0D450 /* PomodoroModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PomodoroModel.swift; sourceTree = "<group>"; };
+		31CEEFD425D826CF00F0D450 /* PomodoroView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PomodoroView.swift; sourceTree = "<group>"; };
+		31CEEFDB25D8CE4000F0D450 /* PomodoroModelView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PomodoroModelView.swift; sourceTree = "<group>"; };
+		31CEEFDE25D92B4E00F0D450 /* AddTaskView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTaskView.swift; sourceTree = "<group>"; };
+		31CEEFE125D968C000F0D450 /* TaskItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskItemView.swift; sourceTree = "<group>"; };
+		31CEEFE825DA12CF00F0D450 /* EditTaskView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditTaskView.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		31CEEFB625D8263100F0D450 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		31CEEFB025D8263100F0D450 = {
+			isa = PBXGroup;
+			children = (
+				31CEEFBB25D8263100F0D450 /* Pomodoro */,
+				31CEEFBA25D8263100F0D450 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		31CEEFBA25D8263100F0D450 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				31CEEFB925D8263100F0D450 /* Pomodoro.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		31CEEFBB25D8263100F0D450 /* Pomodoro */ = {
+			isa = PBXGroup;
+			children = (
+				31CEEFBC25D8263100F0D450 /* PomodoroApp.swift */,
+				31CEEFBE25D8263100F0D450 /* ContentView.swift */,
+				31CEEFC025D8263300F0D450 /* Assets.xcassets */,
+				31CEEFC525D8263300F0D450 /* Persistence.swift */,
+				31CEEFCA25D8263300F0D450 /* Info.plist */,
+				31CEEFC725D8263300F0D450 /* Pomodoro.xcdatamodeld */,
+				31CEEFC225D8263300F0D450 /* Preview Content */,
+				31CEEFD125D8265D00F0D450 /* PomodoroModel.swift */,
+				31CEEFD425D826CF00F0D450 /* PomodoroView.swift */,
+				31CEEFDB25D8CE4000F0D450 /* PomodoroModelView.swift */,
+				31CEEFDE25D92B4E00F0D450 /* AddTaskView.swift */,
+				31CEEFE125D968C000F0D450 /* TaskItemView.swift */,
+				31CEEFE825DA12CF00F0D450 /* EditTaskView.swift */,
+			);
+			path = Pomodoro;
+			sourceTree = "<group>";
+		};
+		31CEEFC225D8263300F0D450 /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+				31CEEFC325D8263300F0D450 /* Preview Assets.xcassets */,
+			);
+			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		31CEEFB825D8263100F0D450 /* Pomodoro */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 31CEEFCD25D8263300F0D450 /* Build configuration list for PBXNativeTarget "Pomodoro" */;
+			buildPhases = (
+				31CEEFB525D8263100F0D450 /* Sources */,
+				31CEEFB625D8263100F0D450 /* Frameworks */,
+				31CEEFB725D8263100F0D450 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Pomodoro;
+			packageProductDependencies = (
+			);
+			productName = Pomodoro;
+			productReference = 31CEEFB925D8263100F0D450 /* Pomodoro.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		31CEEFB125D8263100F0D450 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 1240;
+				LastUpgradeCheck = 1240;
+				TargetAttributes = {
+					31CEEFB825D8263100F0D450 = {
+						CreatedOnToolsVersion = 12.4;
+					};
+				};
+			};
+			buildConfigurationList = 31CEEFB425D8263100F0D450 /* Build configuration list for PBXProject "Pomodoro" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 31CEEFB025D8263100F0D450;
+			packageReferences = (
+			);
+			productRefGroup = 31CEEFBA25D8263100F0D450 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				31CEEFB825D8263100F0D450 /* Pomodoro */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		31CEEFB725D8263100F0D450 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				31CEEFC425D8263300F0D450 /* Preview Assets.xcassets in Resources */,
+				31CEEFC125D8263300F0D450 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		31CEEFB525D8263100F0D450 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				31CEEFE225D968C000F0D450 /* TaskItemView.swift in Sources */,
+				31CEEFC925D8263300F0D450 /* Pomodoro.xcdatamodeld in Sources */,
+				31CEEFC625D8263300F0D450 /* Persistence.swift in Sources */,
+				31CEEFD225D8265D00F0D450 /* PomodoroModel.swift in Sources */,
+				31CEEFDF25D92B4E00F0D450 /* AddTaskView.swift in Sources */,
+				31CEEFD525D826CF00F0D450 /* PomodoroView.swift in Sources */,
+				31CEEFDC25D8CE4000F0D450 /* PomodoroModelView.swift in Sources */,
+				31CEEFE925DA12CF00F0D450 /* EditTaskView.swift in Sources */,
+				31CEEFBF25D8263100F0D450 /* ContentView.swift in Sources */,
+				31CEEFBD25D8263100F0D450 /* PomodoroApp.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		31CEEFCB25D8263300F0D450 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.4;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		31CEEFCC25D8263300F0D450 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.4;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		31CEEFCE25D8263300F0D450 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_ASSET_PATHS = "\"Pomodoro/Preview Content\"";
+				DEVELOPMENT_TEAM = AAMW26HCNK;
+				ENABLE_PREVIEWS = YES;
+				INFOPLIST_FILE = Pomodoro/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.JerronLim.Pomodoro;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		31CEEFCF25D8263300F0D450 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_ASSET_PATHS = "\"Pomodoro/Preview Content\"";
+				DEVELOPMENT_TEAM = AAMW26HCNK;
+				ENABLE_PREVIEWS = YES;
+				INFOPLIST_FILE = Pomodoro/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.JerronLim.Pomodoro;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		31CEEFB425D8263100F0D450 /* Build configuration list for PBXProject "Pomodoro" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				31CEEFCB25D8263300F0D450 /* Debug */,
+				31CEEFCC25D8263300F0D450 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		31CEEFCD25D8263300F0D450 /* Build configuration list for PBXNativeTarget "Pomodoro" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				31CEEFCE25D8263300F0D450 /* Debug */,
+				31CEEFCF25D8263300F0D450 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		31CEEFC725D8263300F0D450 /* Pomodoro.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				31CEEFC825D8263300F0D450 /* Pomodoro.xcdatamodel */,
+			);
+			currentVersion = 31CEEFC825D8263300F0D450 /* Pomodoro.xcdatamodel */;
+			path = Pomodoro.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
+	};
+	rootObject = 31CEEFB125D8263100F0D450 /* Project object */;
+}
