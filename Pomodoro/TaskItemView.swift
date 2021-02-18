@@ -17,17 +17,12 @@ struct TaskItemView: View {
         HStack {
             
             Text(task.name)
-                .font(.title2)
                 .strikethrough(toStrike)
             Spacer()
             Text("\(task.completedPomodoro)/\(task.totalPomodoro)")
         }
         .frame(minWidth: /*@START_MENU_TOKEN@*/0/*@END_MENU_TOKEN@*/, idealWidth: /*@START_MENU_TOKEN@*/100/*@END_MENU_TOKEN@*/, maxWidth: /*@START_MENU_TOKEN@*/.infinity/*@END_MENU_TOKEN@*/, minHeight: /*@START_MENU_TOKEN@*/0/*@END_MENU_TOKEN@*/, idealHeight: 70, maxHeight: /*@START_MENU_TOKEN@*/.infinity/*@END_MENU_TOKEN@*/, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
         .onTapGesture {
-            toStrike = !toStrike
-            //TODO: Check task as done?
-        }
-        .onLongPressGesture {
             toEdit = !toEdit
         }
         .sheet(isPresented: $toEdit, content: {

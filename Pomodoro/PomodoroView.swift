@@ -11,6 +11,8 @@ struct PomodoroView: View {
     @ObservedObject var pomodoroModelView: PomodoroModelView = PomodoroModelView()
 
     @State var showSheet: Bool = false
+    @State var showAlert: Bool = false
+    @State var nextMode: Int = 0 // temp variable to hold the mode to switch to before confirmation alert
     
     @State var bgColor: Color = Color(red: 219 / 225, green: 82 / 225, blue: 77 / 225)
     
@@ -20,26 +22,32 @@ struct PomodoroView: View {
                 HStack {
                     Spacer()
                     Button(action: {
-                        transitionBg(to: 0)
+                        switchModes(to: 0)
                     }, label: {
                         Text("Pomodoro")
                             .fontWeight(pomodoroModelView.mode == 0 ? .heavy : .regular)
                     })
                     Spacer()
                     Button(action: {
-                        transitionBg(to: 1)
+                        switchModes(to: 1)
                     }, label: {
                         Text("Short Break")
                             .fontWeight(pomodoroModelView.mode == 1 ? .heavy : .regular)
                     })
                     Spacer()
                     Button(action: {
-                        transitionBg(to: 2)
+                        switchModes(to: 2)
                     }, label: {
                         Text("Long Break")
                             .fontWeight(pomodoroModelView.mode == 2 ? .heavy : .regular)
                     })
                     Spacer()
+                }
+                .alert(isPresented: $showAlert) {
+                    Alert(title: Text(""), message: Text("The timer is still running, are you sure you want to switch?"), primaryButton: .default(Text("Ok")) {
+                        
+                        switchModes(to: nextMode, ignore: true)
+                    }, secondaryButton: .cancel())
                 }
                 .frame(maxWidth: .infinity, alignment: .top)
                 .padding()
@@ -99,7 +107,6 @@ struct PomodoroView: View {
                 List {
                     if pomodoroModelView.tasks.count == 0 {
                         Text("All tasks completed! 😁")
-                            .font(.title2)
                             .foregroundColor(.gray)
                     }
                     ForEach(pomodoroModelView.tasks) { task in
@@ -125,9 +132,17 @@ struct PomodoroView: View {
         
     }
     
+    private func switchModes(to mode: Int, ignore: Bool = false) {
+        if pomodoroModelView.startTimer && !ignore {
+            nextMode = mode
+            showAlert = true
+        } else {
+            pomodoroModelView.setCountdownRemaining(mode: mode)
+            transitionBg(to: mode)
+        }
+    }
+    
     private func transitionBg(to mode: Int) {
-        pomodoroModelView.setCountdownRemaining(mode: mode)
-        
         withAnimation(.easeIn) {
             if pomodoroModelView.mode == 0 {
                 bgColor = Color(red: 219 / 225, green: 82 / 225, blue: 77 / 225)
@@ -153,7 +168,15 @@ extension PomodoroView {
             }
         }
         let longBreaksCount = pomodoroCount / 4
-        let durationInSeconds = (pomodoroCount * pomodoroModelView.focus + longBreaksCount * pomodoroModelView.longBreak + ( pomodoroCount - longBreaksCount) * pomodoroModelView.shortBreak)
+        var durationInSeconds = (pomodoroCount * pomodoroModelView.focus + longBreaksCount * pomodoroModelView.longBreak + ( pomodoroCount - longBreaksCount) * pomodoroModelView.shortBreak)
+        let isEndWithLongBreak = pomodoroCount % 4 == 0 ? true : false
+        
+        if isEndWithLongBreak {
+            durationInSeconds -= pomodoroModelView.longBreak
+        }else {
+            durationInSeconds -= pomodoroModelView.shortBreak
+        }
+        
         let components = Calendar.current.dateComponents([.hour, .minute], from: Date().addingTimeInterval(Double(durationInSeconds)))
         return "\(String(format: "%02d", components.hour!)):\(String(format: "%02d", components.minute!))"
     }

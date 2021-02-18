@@ -44,7 +44,6 @@ struct EditTaskView: View {
             }, label: {
                 Text("Cancel")
             }), trailing: Button(action: {
-                //TODO: Add action here
                 pomodoroModelView.editTask(for: task.id, name: name, pomodoro: pomodoro)
                 isPresented = false
             }, label: {
