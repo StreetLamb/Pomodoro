@@ -7,51 +7,32 @@
 
 import Foundation
 
-struct PomodoroModel {
+struct PomodoroModel: Codable {
     private(set) var focus: Int = 25 * 60
     private(set) var shortBreak: Int = 5 * 60
     private(set) var longBreak: Int = 15 * 60
-    
-    var total: Int {
-        var pomodoroCount = 0
-        for task in tasks {
-            pomodoroCount += task.totalPomodoro
-        }
-        return pomodoroCount
-    }
+
     var completed: Int = 0 // number of focus session completed
     
-    var finishedTime: Date {
-        var pomodoroCount = 0
-        for task in tasks {
-            if !task.done {
-                pomodoroCount += task.totalPomodoro
-            }
-        }
-        let longBreaksCount = pomodoroCount / 4
-        let durationInSeconds = (pomodoroCount * focus + longBreaksCount * longBreak + ( pomodoroCount - longBreaksCount) * shortBreak)
-        return Date().addingTimeInterval(Double(durationInSeconds))
-    }
+    var timestamp: Date?
     
     var tasks = [Task]()
     
-    var countdownRemaining: Int = 25 * 60
+    var json: Data? {
+        return try? JSONEncoder().encode(self)
+    }
     
-    var mode: Int = 0 {
-        didSet {
-            if mode == 0 {
-                countdownRemaining = focus
-            } else if mode == 1 {
-                countdownRemaining = shortBreak
-            } else {
-                countdownRemaining = longBreak
-            }
+    init?(json: Data?) {
+        if json != nil, let newPomodoroModel = try? JSONDecoder().decode(PomodoroModel.self, from: json!) {
+            self = newPomodoroModel
+        } else {
+            return nil
         }
     }
     
-    var startTimer: Bool = false
-        
-    struct Task: Identifiable {
+    init(){}
+    
+    struct Task: Identifiable, Codable {
         var id = UUID()
         
         var name: String

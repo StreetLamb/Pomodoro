@@ -6,11 +6,69 @@
 //
 
 import SwiftUI
-
+import Combine
 class PomodoroModelView: ObservableObject {
-    @Published private var pomodoroModel: PomodoroModel = PomodoroModel()
+    @Published private var pomodoroModel: PomodoroModel
+    
+    @ObservedObject var notificationManager = LocalNotificationManager()
+        
+    private var autosaveCancellable: AnyCancellable?
+    init() {
+        pomodoroModel = PomodoroModel(json: UserDefaults.standard.data(forKey: "Model")) ?? PomodoroModel()
+        autosaveCancellable = $pomodoroModel.sink { PomodoroModel in
+            UserDefaults.standard.set(PomodoroModel.json, forKey: "Model")
+        }
+        print(pomodoroModel.timestamp ?? "no timestamp")
+        if let timestamp = pomodoroModel.timestamp {
+            if !Calendar.current.isDateInToday(timestamp) {
+                print("update date")
+                pomodoroModel.completed = 0
+                pomodoroModel.timestamp = Date()
+            }
+        } else {
+            print("update date")
+            pomodoroModel.timestamp = Date()
+        }
+    }
     
     private var timer: Timer?
+    
+    private var countdownTime: Int {
+        if mode == 0 {
+            return focus
+        } else if mode == 1 {
+            return shortBreak
+        } else {
+            return longBreak
+        }
+    }
+    
+    @Published var remainingTime: Int?
+    
+    var mode: Int = 0 {
+        didSet {
+            if mode == 0 {
+                remainingTime = focus
+                interval = 0
+            } else if mode == 1 {
+                remainingTime = shortBreak
+                interval = 0
+            } else {
+                remainingTime = longBreak
+                interval = 0
+            }
+        }
+    }
+    
+    @Published private(set) var startTimer: Bool = false
+    
+    private var startDate: Date?
+    
+    private var interval: Double = 0
+    
+    private var notificationText: String {
+        mode == 0 ? "Take a break!😁 You earned it!" : "Get back to the grind!💪"
+    }
     
     
     //MARK: - Access to model
@@ -31,33 +89,16 @@ class PomodoroModelView: ObservableObject {
         pomodoroModel.tasks
     }
     
-    var total: Int {
-        pomodoroModel.total
-    }
     
     var completed: Int {
         pomodoroModel.completed
     }
     
-    var remainingTime: String {
-        let components = Calendar.current.dateComponents([.hour, .minute], from: pomodoroModel.finishedTime)
-        return "\(String(format: "%02d", components.hour!)):\(String(format: "%02d", components.minute!))"
-    }
-    
     var countdownRemaining: String {
-        let minutes = String(format: "%02d", pomodoroModel.countdownRemaining / 60)
-        let seconds = String(format: "%02d", pomodoroModel.countdownRemaining % 60)
+        let minutes = String(format: "%02d", (remainingTime ?? countdownTime) / 60)
+        let seconds = String(format: "%02d", (remainingTime ?? countdownTime) % 60)
         return "\(minutes):\(seconds)"
     }
-    
-    var startTimer: Bool {
-        pomodoroModel.startTimer
-    }
-    
-    var mode: Int {
-        pomodoroModel.mode
-    }
-    
     
     
     //MARK: - Intent
@@ -75,45 +116,53 @@ class PomodoroModelView: ObservableObject {
     }
     
     func startCountdown() {
-        pomodoroModel.startTimer = true
+        startTimer = true
+        startDate = Date().addingTimeInterval(interval)
+        remainingTime = countdownTime + Int(startDate!.timeIntervalSinceNow)
+        //start an alert
+        notificationManager.sendNotification(title: "Time's up!", subtitle: nil, body: notificationText, launchIn: Double(remainingTime!))
+        
         timer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true) { [self] tempTimer in
-            if pomodoroModel.countdownRemaining > 0 {
-                pomodoroModel.countdownRemaining -= 1
+            if remainingTime! > 0 {
+                remainingTime = countdownTime + Int(startDate!.timeIntervalSinceNow)
             } else {
                 tempTimer.invalidate()
-                pomodoroModel.startTimer = false
+                startTimer = false
                 resetCountdown()
-                if pomodoroModel.tasks.count > 0 {
-                    pomodoroModel.tasks[0].completedPomodoro += 1
-                }
             }
         }
     }
     
+    
     func stopCountdown() {
-        pomodoroModel.startTimer = false
+        notificationManager.cancelNotifications()
+        startTimer = false
+        interval = startDate?.timeIntervalSinceNow ?? 0
         timer?.invalidate()
     }
     
-    func resetCountdown() {
-        if pomodoroModel.mode == 0 {
+    
+    private func resetCountdown() {
+        if mode == 0 {
             pomodoroModel.completed += 1
+            if pomodoroModel.tasks.count > 0 && mode == 0 {
+                pomodoroModel.tasks[0].completedPomodoro += 1
+            }
         }
-        
-        if completed % 4 != 0 && pomodoroModel.mode == 0 {
+        if completed % 4 != 0 && mode == 0 {
             setCountdownRemaining(mode: 1)
-        } else if completed % 4 == 0 && pomodoroModel.mode != 2 {
+        } else if completed % 4 == 0 && mode != 2 {
             setCountdownRemaining(mode: 2)
         } else {
             setCountdownRemaining(mode: 0)
         }
         
-        setCountdownRemaining(mode: pomodoroModel.mode)
+        setCountdownRemaining(mode: mode)
     }
     
     func setCountdownRemaining(mode: Int) {
         stopCountdown()
-        pomodoroModel.mode = mode
+        self.mode = mode
     }
 
 }

@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		31CEEFBD25D8263100F0D450 /* PomodoroApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31CEEFBC25D8263100F0D450 /* PomodoroApp.swift */; };
 		31CEEFBF25D8263100F0D450 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31CEEFBE25D8263100F0D450 /* ContentView.swift */; };
-		31CEEFC125D8263300F0D450 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 31CEEFC025D8263300F0D450 /* Assets.xcassets */; };
 		31CEEFC425D8263300F0D450 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 31CEEFC325D8263300F0D450 /* Preview Assets.xcassets */; };
 		31CEEFC625D8263300F0D450 /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31CEEFC525D8263300F0D450 /* Persistence.swift */; };
 		31CEEFC925D8263300F0D450 /* Pomodoro.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 31CEEFC725D8263300F0D450 /* Pomodoro.xcdatamodeld */; };
@@ -19,13 +18,14 @@
 		31CEEFDF25D92B4E00F0D450 /* AddTaskView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31CEEFDE25D92B4E00F0D450 /* AddTaskView.swift */; };
 		31CEEFE225D968C000F0D450 /* TaskItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31CEEFE125D968C000F0D450 /* TaskItemView.swift */; };
 		31CEEFE925DA12CF00F0D450 /* EditTaskView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31CEEFE825DA12CF00F0D450 /* EditTaskView.swift */; };
+		31CEF00425DD6ACC00F0D450 /* LocalNotificationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31CEF00325DD6ACC00F0D450 /* LocalNotificationManager.swift */; };
+		31CEF00825DD6ED300F0D450 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 31CEF00725DD6ED300F0D450 /* Assets.xcassets */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		31CEEFB925D8263100F0D450 /* Pomodoro.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Pomodoro.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		31CEEFBC25D8263100F0D450 /* PomodoroApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PomodoroApp.swift; sourceTree = "<group>"; };
 		31CEEFBE25D8263100F0D450 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
-		31CEEFC025D8263300F0D450 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		31CEEFC325D8263300F0D450 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		31CEEFC525D8263300F0D450 /* Persistence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Persistence.swift; sourceTree = "<group>"; };
 		31CEEFC825D8263300F0D450 /* Pomodoro.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Pomodoro.xcdatamodel; sourceTree = "<group>"; };
@@ -36,6 +36,8 @@
 		31CEEFDE25D92B4E00F0D450 /* AddTaskView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTaskView.swift; sourceTree = "<group>"; };
 		31CEEFE125D968C000F0D450 /* TaskItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskItemView.swift; sourceTree = "<group>"; };
 		31CEEFE825DA12CF00F0D450 /* EditTaskView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditTaskView.swift; sourceTree = "<group>"; };
+		31CEF00325DD6ACC00F0D450 /* LocalNotificationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalNotificationManager.swift; sourceTree = "<group>"; };
+		31CEF00725DD6ED300F0D450 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -68,9 +70,9 @@
 		31CEEFBB25D8263100F0D450 /* Pomodoro */ = {
 			isa = PBXGroup;
 			children = (
+				31CEF00725DD6ED300F0D450 /* Assets.xcassets */,
 				31CEEFBC25D8263100F0D450 /* PomodoroApp.swift */,
 				31CEEFBE25D8263100F0D450 /* ContentView.swift */,
-				31CEEFC025D8263300F0D450 /* Assets.xcassets */,
 				31CEEFC525D8263300F0D450 /* Persistence.swift */,
 				31CEEFCA25D8263300F0D450 /* Info.plist */,
 				31CEEFC725D8263300F0D450 /* Pomodoro.xcdatamodeld */,
@@ -81,6 +83,7 @@
 				31CEEFDE25D92B4E00F0D450 /* AddTaskView.swift */,
 				31CEEFE125D968C000F0D450 /* TaskItemView.swift */,
 				31CEEFE825DA12CF00F0D450 /* EditTaskView.swift */,
+				31CEF00325DD6ACC00F0D450 /* LocalNotificationManager.swift */,
 			);
 			path = Pomodoro;
 			sourceTree = "<group>";
@@ -154,8 +157,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				31CEF00825DD6ED300F0D450 /* Assets.xcassets in Resources */,
 				31CEEFC425D8263300F0D450 /* Preview Assets.xcassets in Resources */,
-				31CEEFC125D8263300F0D450 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -166,6 +169,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				31CEF00425DD6ACC00F0D450 /* LocalNotificationManager.swift in Sources */,
 				31CEEFE225D968C000F0D450 /* TaskItemView.swift in Sources */,
 				31CEEFC925D8263300F0D450 /* Pomodoro.xcdatamodeld in Sources */,
 				31CEEFC625D8263300F0D450 /* Persistence.swift in Sources */,

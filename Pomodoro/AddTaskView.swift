@@ -15,13 +15,11 @@ struct AddTaskView: View {
     
     var body: some View {
         NavigationView {
-            VStack(spacing: 50) {
-                Group {
-                    
+            Form {
+                Section {
                     TextField("What are you working on?", text: $name)
-                        .multilineTextAlignment(/*@START_MENU_TOKEN@*/.leading/*@END_MENU_TOKEN@*/)
-                    Divider()
-                    Stepper("Pomodoros: \(pomodoro)") {
+                        .multilineTextAlignment(.leading)
+                    Stepper("\(pomodoro) Pomodoro") {
                         pomodoro += 1
                     } onDecrement: {
                         if pomodoro > 1 {
@@ -29,8 +27,6 @@ struct AddTaskView: View {
                         }
                     }
                 }
-                .foregroundColor(.black)
-                Spacer()
             }
             .navigationBarTitle("Add Task", displayMode: .inline)
             .navigationBarItems(leading: Button(action: {
@@ -46,8 +42,6 @@ struct AddTaskView: View {
             })
             .disabled(name.trimmingCharacters(in: .whitespaces).isEmpty)
             )
-            .font(.title2)
-            .padding()
         }
     }
 }

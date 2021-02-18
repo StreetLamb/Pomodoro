@@ -9,11 +9,10 @@ import SwiftUI
 
 struct PomodoroView: View {
     @ObservedObject var pomodoroModelView: PomodoroModelView = PomodoroModelView()
-    
+
     @State var showSheet: Bool = false
     
     @State var bgColor: Color = Color(red: 219 / 225, green: 82 / 225, blue: 77 / 225)
-    
     
     var body: some View {
         VStack {
@@ -48,9 +47,9 @@ struct PomodoroView: View {
                 Text("\(pomodoroModelView.countdownRemaining)")
                     .font(.system(size: 70))
                 HStack(spacing: 30) {
-                    Text("Est: \(pomodoroModelView.total)")
+                    Text("Est: \(total)")
                     Text("Act: \(pomodoroModelView.completed)")
-                    Text("Finish: \(pomodoroModelView.remainingTime)")
+                    Text("Finish: \(finishedTime)")
                 }
                 Spacer()
                 Button(action: {
@@ -97,7 +96,6 @@ struct PomodoroView: View {
                 }
                 .foregroundColor(.white)
                 
-                
                 List {
                     if pomodoroModelView.tasks.count == 0 {
                         Text("All tasks completed! 😁")
@@ -118,12 +116,12 @@ struct PomodoroView: View {
         .padding(.horizontal)
         .padding(.bottom, 50)
         .padding(.top, 30)
-        .frame(minWidth: /*@START_MENU_TOKEN@*/0/*@END_MENU_TOKEN@*/, idealWidth: /*@START_MENU_TOKEN@*/100/*@END_MENU_TOKEN@*/, maxWidth: /*@START_MENU_TOKEN@*/.infinity/*@END_MENU_TOKEN@*/, minHeight: /*@START_MENU_TOKEN@*/0/*@END_MENU_TOKEN@*/, idealHeight: /*@START_MENU_TOKEN@*/100/*@END_MENU_TOKEN@*/, maxHeight: /*@START_MENU_TOKEN@*/.infinity/*@END_MENU_TOKEN@*/, alignment: .top)
         .background(bgColor)
         .edgesIgnoringSafeArea(.all)
         .onChange(of: pomodoroModelView.mode, perform: { value in
             transitionBg(to: value)
         })
+        
         
     }
     
@@ -140,6 +138,32 @@ struct PomodoroView: View {
                 bgColor = Color(red: 67 / 225, green: 126 / 225, blue: 168 / 225)
             }
         }
+    }
+}
+
+//MARK: - Helpers
+
+extension PomodoroView {
+    
+    var finishedTime: String {
+        var pomodoroCount = 0
+        for task in pomodoroModelView.tasks {
+            if !task.done {
+                pomodoroCount += task.totalPomodoro
+            }
+        }
+        let longBreaksCount = pomodoroCount / 4
+        let durationInSeconds = (pomodoroCount * pomodoroModelView.focus + longBreaksCount * pomodoroModelView.longBreak + ( pomodoroCount - longBreaksCount) * pomodoroModelView.shortBreak)
+        let components = Calendar.current.dateComponents([.hour, .minute], from: Date().addingTimeInterval(Double(durationInSeconds)))
+        return "\(String(format: "%02d", components.hour!)):\(String(format: "%02d", components.minute!))"
+    }
+    
+    var total: Int {
+        var pomodoroCount = 0
+        for task in pomodoroModelView.tasks {
+            pomodoroCount += task.totalPomodoro
+        }
+        return pomodoroCount
     }
 }
 

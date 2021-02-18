@@ -25,13 +25,11 @@ struct EditTaskView: View {
     
     var body: some View {
         NavigationView {
-            VStack(spacing: 50) {
-                Group {
-                    
+            Form {
+                Section {
                     TextField("What are you working on?", text: $name)
                         .multilineTextAlignment(/*@START_MENU_TOKEN@*/.leading/*@END_MENU_TOKEN@*/)
-                    Divider()
-                    Stepper("Pomodoros: \(pomodoro)") {
+                    Stepper("\(pomodoro) Pomodoro") {
                         pomodoro += 1
                     } onDecrement: {
                         if pomodoro > 1 {
@@ -39,8 +37,6 @@ struct EditTaskView: View {
                         }
                     }
                 }
-                .foregroundColor(.black)
-                Spacer()
             }
             .navigationBarTitle("Edit Task", displayMode: .inline)
             .navigationBarItems(leading: Button(action: {
@@ -57,8 +53,6 @@ struct EditTaskView: View {
             .disabled(name.trimmingCharacters(in: .whitespaces).isEmpty)
             
             )
-            .font(.title2)
-            .padding()
         }
     }
 }
